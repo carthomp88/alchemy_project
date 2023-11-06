@@ -1,0 +1,18 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>130</x><y>210</y><w>100</w><h>30</h></coordinates><panel_attributes>/Ingredient/
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>130</x><y>170</y><w>100</w><h>30</h></coordinates><panel_attributes>/Item/
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>320</x><y>40</y><w>120</w><h>120</h></coordinates><panel_attributes>Player
+--
+Money
+Inventory
+--
+Moves
+Collects Resources
+Uses Work Stations</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>450</x><y>40</y><w>100</w><h>30</h></coordinates><panel_attributes>Inventory</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>130</x><y>250</y><w>100</w><h>30</h></coordinates><panel_attributes>/Recipe/
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>130</x><y>290</y><w>100</w><h>30</h></coordinates><panel_attributes>/Work Station/
+--
+--
+Exchange Resources</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>500</x><y>250</y><w>100</w><h>30</h></coordinates><panel_attributes>Shop</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>500</x><y>290</y><w>100</w><h>30</h></coordinates><panel_attributes>Mine</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>500</x><y>330</y><w>100</w><h>30</h></coordinates><panel_attributes>Forest</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>500</x><y>370</y><w>100</w><h>30</h></coordinates><panel_attributes>Distillery</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>150</x><y>20</y><w>100</w><h>60</h></coordinates><panel_attributes>/Resource/
+--
+ID
+Value
+</panel_attributes><additional_attributes></additional_attributes></element></diagram>
