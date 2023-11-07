@@ -1,0 +1,46 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>80</x><y>40</y><w>100</w><h>40</h></coordinates><panel_attributes>ScreenManager
+--
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>200</x><y>40</y><w>80</w><h>50</h></coordinates><panel_attributes>/Resource/
+--
+--
+/+int getID()/</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>310</x><y>40</y><w>140</w><h>190</h></coordinates><panel_attributes>Ingredient
+--
+- string name
+- int id
+- int value
+- string description
+- string imgFileName
+--
++ string getName()
++ int getID()
++ int getVal()
++ string toString()
++ string getImgName()
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>460</x><y>40</y><w>140</w><h>220</h></coordinates><panel_attributes>Item
+--
+- string name
+- int value
+- int uses
+- string description
+- string imgFileName
+--
++ string getName
++ int getVal
++ int getUses
++ string toString()
++ string getImgName
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>20</x><y>240</y><w>300</w><h>120</h></coordinates><panel_attributes>RecipeManager
+--
+- Object[] *recipeHead
+- int[] *idHead
+- String[] *infoHead
+--
++ int[] combine(ArrayList&lt;Integer&gt; resourceIDList)
++ String getRecipeInfo(int id)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>80</x><y>90</y><w>100</w><h>70</h></coordinates><panel_attributes>/Screen/
+--
+--
+/+ getPane()/
+/+ generate()/</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>40</x><y>180</y><w>250</w><h>50</h></coordinates><panel_attributes>/Work Station/
+--
+--
+/+ doWork(ArrayList&lt;Integer&gt; resourceIDList)/</panel_attributes><additional_attributes></additional_attributes></element></diagram>
