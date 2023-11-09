@@ -1,5 +1,6 @@
-red:yellow,0,The Color Orange,Orange
-red:blue,1,The Color Purple,Purple
-blue:yellow,2,The Color Green,Green
-green,2,The Color Green,Green
-red:orange,2,The Color Green,Green
+5,1,0:1,2
+6,1,1:2,2
+7,1,0:2,2
+8,1,0:3,3
+9,1,3:6,1
+10,1,3:7,1

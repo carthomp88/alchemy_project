@@ -2,72 +2,54 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class RecipeManager {
-    private ArrayList<ArrayList<String[]>> recipeTable;
-    private int[] idTable;
-    private String[] infoTable;
-    private String[] outputNames;
+    private RNode recipeTableHead;
     private String filename;
+    private RNode cursorRNode;
+    private IngredientManager im;
 
-    public RecipeManager() {
-        recipeTable = new ArrayList<ArrayList<String[]>>();
-        infoTable = new String[10];
-        idTable = new int[10];
-        for (int i = 0; i < 10; i++)
-            idTable[i] = i;
+    public RecipeManager() throws FileNotFoundException {
+        recipeTableHead = new RNode();
         filename = "./files/recipes.csv";
-        outputNames = new String[10];
+        cursorRNode = recipeTableHead;
+        im = new IngredientManager();
+        im.makeTable();
+        // recipes.csv format:
+        // ID of ingredient produced, number of combinations that produce it, those
+        // combinations as IDs, quantities for each combo
+        // ex: 3,2,1:2,3,2:1
+    }
+
+    public IngredientManager imAccesser() {
+        return im;
     }
 
     public void makeTable() throws FileNotFoundException {
         // have a CSV with potential recipes be read in here
+        cursorRNode = recipeTableHead;
         csvReader reader = new csvWrapper();
         String[] lines = reader.readFile(filename);
         for (String line : lines) {
             if (line != null) {
-                String[] components = line.split(",");
-                String[] resources = components[0].split(":");
-                Integer id = Integer.parseInt(components[1]);
-                addRecipe(resources, id.intValue(), components[2], components[3]);
+                String[] data = line.split(",");
+                int id = Integer.parseInt(data[0]);
+                int combos = Integer.parseInt(data[1]);
+                String[] componentNames = new String[combos];
+                for (int i = 0; i < combos; i++) {
+                    componentNames[i] = data[2 + i];
+                }
+                int qCount = 0;
+                String[] qStrings = data[data.length - 1].split(":");
+                for (String compName : componentNames) {
+                    String[] s = compName.split(":");
+                    Resource[] r = new Resource[s.length];
+                    for (int i = 0; i < s.length; i++) {
+                        r[i] = im.cloneResource(Integer.parseInt(s[i]));
+                    }
+                    cursorRNode.addNode(id, r, Integer.parseInt(qStrings[qCount]));
+                    qCount++;
+                    cursorRNode = cursorRNode.getNext();
+                }
             }
         }
-    }
-
-    public void addRecipe(String[] recipeComponents, int id, String description, String name) {
-        ArrayList<String[]> currentRecipe = search(id);
-        if (currentRecipe == null) { // otherwise there is an existing list of recipes that can be added to, and
-                                     // other info is filled in already
-            currentRecipe = new ArrayList<String[]>();
-            idTable[id] = id;
-            infoTable[id] = description;
-            outputNames[id] = name;
-            recipeTable.add(currentRecipe);
-        }
-        currentRecipe.add(recipeComponents);
-    }
-
-    public ArrayList<String[]> search(int id) {
-        if (recipeTable.size() <= id)
-            return null;
-        else {
-            return recipeTable.get(id);
-        }
-    }
-
-    public void extendTables() {
-
-    }
-
-    public String getOutput(int id) {
-        return outputNames[id];
-    }
-
-    public String getIngredients(int id) {
-        String ingString = "";
-        for (String[] ingredientList : recipeTable.get(id)) {
-            for (String ingredient : ingredientList)
-                ingString += (ingredient + " ");
-            ingString += "\n";
-        }
-        return ingString;
     }
 }
